@@ -94,6 +94,7 @@ alias gs="git status"
 alias vs="vagrant status"
 alias git.io="gitio"
 alias gist="gist -p -c"
+alias gg="gist"
 . /Users/mahmoudaminhassan-dolah/Documents/Other/cmd_line/z/z.sh
 
 alias vagrant-xdebug='vagrant ssh -- -R 9100:127.0.0.1:9100'
