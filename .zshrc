@@ -116,6 +116,7 @@ function vlb() {
     vim $LOGBOOK_DIR/$(date '+%Y-%m-%d').md
 }
 function lbc() {
+    echo "Today's logbook"
     mkdir -p $LOGBOOK_DIR
     code $LOGBOOK_DIR
     if [ ! -f $LOGBOOK_DIR/$(date '+%Y-%m-%d').md ]; then
@@ -124,7 +125,21 @@ function lbc() {
 
 ## Other" >> $LOGBOOK_DIR/$(date '+%Y-%m-%d').md
     fi
-    code -g $LOGBOOK_DIR/$(date '+%Y-%m-%d').md
+    code -g $LOGBOOK_DIR/$(date '+%Y-%m-%d').md:2
+}
+function lbcc() {
+    echo "Tomorrow's logbook"
+    TOMORROW_DATE=$(if [[ $( date -v+1d +%u ) -lt 5 ]] ; then date -v+1d '+%Y-%m-%d' ; else date -v+3d '+%Y-%m-%d' ; fi)
+    mkdir -p $LOGBOOK_DIR
+    code $LOGBOOK_DIR
+
+    if [ ! -f $LOGBOOK_DIR/$TOMORROW_DATE.md ]; then
+        touch $LOGBOOK_DIR/$TOMORROW_DATE.md
+        echo "## Tasks
+
+## Other" >> $LOGBOOK_DIR/$TOMORROW_DATE.md
+    fi
+    code -g $LOGBOOK_DIR/$TOMORROW_DATE.md
 }
 #function lbs() {
 #    vim ~/logbook/standby-occurrences.md
@@ -135,9 +150,6 @@ function fbr() {
   branch=$(echo "$branches" | fzf +s +m -e) &&
   git checkout $(echo "$branch" | sed "s:.* remotes/origin/::" | sed "s:.* ::")
 }
-#function test() {
-#    echo "Parameter is $1"
-#}
 function gcopy() {
     gitio shorten "$1" | pbcopy
 }
