@@ -105,6 +105,7 @@ LOGBOOK_DIR="/Users/mahmoudaminhassan-dolah/OneDrive/OneDrive - Somethingdigital
 
 function lb() {
     mkdir -p $LOGBOOK_DIR
+    cd $LOGBOOK_DIR
     vim $LOGBOOK_DIR/$(date '+%Y-%m-%d').md
 }
 function lb-cat() {
@@ -128,10 +129,10 @@ function lbc() {
     code -g $LOGBOOK_DIR/$(date '+%Y-%m-%d').md:2
 }
 function lbcc() {
-    echo "Tomorrow's logbook"
     TOMORROW_DATE=$(if [[ $( date -v+1d +%u ) -lt 5 ]] ; then date -v+1d '+%Y-%m-%d' ; else date -v+3d '+%Y-%m-%d' ; fi)
+    echo "Tomorrow's logbook"
+    echo $TOMORROW_DATE
     mkdir -p $LOGBOOK_DIR
-    code $LOGBOOK_DIR
 
     if [ ! -f $LOGBOOK_DIR/$TOMORROW_DATE.md ]; then
         touch $LOGBOOK_DIR/$TOMORROW_DATE.md
@@ -139,7 +140,8 @@ function lbcc() {
 
 ## Other" >> $LOGBOOK_DIR/$TOMORROW_DATE.md
     fi
-    code -g $LOGBOOK_DIR/$TOMORROW_DATE.md
+    #code $LOGBOOK_DIR
+    #code -g $LOGBOOK_DIR/$TOMORROW_DATE.md
 }
 #function lbs() {
 #    vim ~/logbook/standby-occurrences.md
