@@ -8,8 +8,9 @@ export ZSH=/Users/mahmoudaminhassan-dolah/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
+#PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)$(hg_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
 ZSH_THEME="dpoggi"
-PROMPT='mahmoud@Macbook-pro » '
+#PROMPT='mahmoud@Macbook-pro » '
 #ZSH_THEME="agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -54,7 +55,7 @@ PROMPT='mahmoud@Macbook-pro » '
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode git-open)
+plugins=(git vi-mode mercurial)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -95,6 +96,8 @@ alias vs="vagrant status"
 alias git.io="gitio"
 alias gist="gist -p -c"
 alias gg="gist"
+alias wttr="curl wttr.in"
+alias gimme-space="du -shx /Users/mahmoudaminhassan-dolah/Library/Application\ Support/Code/User/workspaceStorage/*; rm -rf /Users/mahmoudaminhassan-dolah/Library/Application\ Support/Code/User/workspaceStorage/*"
 . /Users/mahmoudaminhassan-dolah/Documents/Other/cmd_line/z/z.sh
 
 alias vagrant-xdebug='vagrant ssh -- -R 9100:127.0.0.1:9100'
@@ -129,7 +132,8 @@ function lbc() {
     code -g $LOGBOOK_DIR/$(date '+%Y-%m-%d').md:2
 }
 function lbcc() {
-    TOMORROW_DATE=$(if [[ $( date -v+1d +%u ) -lt 5 ]] ; then date -v+1d '+%Y-%m-%d' ; else date -v+3d '+%Y-%m-%d' ; fi)
+    #TOMORROW_DATE=$(if [[ $( date -v+1d +%u ) -lt 5 ]] ; then date -v+1d '+%Y-%m-%d' ; else date -v+3d '+%Y-%m-%d' ; fi)
+    TOMORROW_DATE=$(if [[ $( date +%u ) -lt 5 ]] ; then date -v+1d '+%Y-%m-%d' ; else date -v+3d '+%Y-%m-%d' ; fi)
     echo "Tomorrow's logbook"
     echo $TOMORROW_DATE
     mkdir -p $LOGBOOK_DIR
@@ -170,3 +174,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 alias config='/usr/bin/git --git-dir=/Users/mahmoudaminhassan-dolah/.cfg/ --work-tree=/Users/mahmoudaminhassan-dolah'
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
