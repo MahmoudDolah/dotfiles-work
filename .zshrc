@@ -114,6 +114,12 @@ alias lbj="/usr/local/bin/python3 /Users/mdolah/Documents/logbook/jira_logbook.p
 alias lbr="cd ~/Documents/notes && vi -- "$(ls -t | head -n 1)" && cd -"
 alias notes="note"
 alias standup="cd ~/Documents/Work && git standup && cd -"
+# show pretty git diff
+alias gitdiff='git difftool -y -x "colordiff -y -W $COLUMNS" | less -R'
+# go to root git directory
+alias cdgit='cd $(git rev-parse --show-toplevel)'
+# get times for salah
+alias prayer="curl -X GET http://api.aladhan.com/v1/timingsByCity\?city\=NYC\&country\=USA\&method\=2 | jq"
 . ~/.local/z
 eval $(thefuck --alias)
 
