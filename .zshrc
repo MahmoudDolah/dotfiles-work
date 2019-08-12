@@ -96,6 +96,10 @@ export SPRINT="155"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+rczsh='~/.zshrc'
+alias src="source $rczsh"
+alias vrc="vim $rczsh"
+alias vo="vim -O"
 alias v="vim"
 alias lt="ls -lathr"
 alias gg="gist -pc"
@@ -119,7 +123,7 @@ alias gitdiff='git difftool -y -x "colordiff -y -W $COLUMNS" | less -R'
 # go to root git directory
 alias cdgit='cd $(git rev-parse --show-toplevel)'
 # get times for salah
-alias prayer="curl -X GET http://api.aladhan.com/v1/timingsByCity\?city\=NYC\&country\=USA\&method\=2 | jq"
+alias prayer="curl -sSX GET http://api.aladhan.com/v1/timingsByCity\?city\=NYC\&country\=USA\&method\=2 | jq .data.timings"
 . ~/.local/z
 eval $(thefuck --alias)
 
@@ -190,7 +194,8 @@ function note() {
 }
 
 function vim-diff() {
-    vim -p $(git status --porcelain | awk '{print $2}')
+    #vim -p $(git status --porcelain $1 | awk '{print $2}')
+    vim -p $(git status -s $1 | awk '{print $2}')
 }
 alias vd="vim-diff"
 
