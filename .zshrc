@@ -99,6 +99,7 @@ export KOPS_STATE_STORE=s3://kubernetes-state-stores
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+# A lot of these have been lifted from https://news.ycombinator.com/item?id=18898523
 rczsh='~/.zshrc'
 alias src="source $rczsh"
 alias vrc="vim $rczsh"
@@ -111,6 +112,7 @@ alias gg="gist -pc"
 alias gist="gist -pc"
 alias gistf="/usr/local/bin/gist"
 alias gs="git status"
+alias gca="git commit --amend"
 alias gfa="git fetch --all"
 alias tf="terraform"
 alias gf="git flow"
@@ -123,6 +125,7 @@ alias lbj="/usr/local/bin/python3 /Users/mdolah/Documents/logbook/jira_logbook.p
 alias lbr="cd ~/Documents/notes && vi -- "$(ls -t | head -n 1)" && cd -"
 alias notes="note"
 alias standup="cd ~/Documents/Work && git standup && cd -"
+alias myip="curl -4 icanhazip.com"
 alias locat="locate"
 # show pretty git diff
 alias gitdiff='git difftool -y -x "colordiff -y -W $COLUMNS" | less -R'
@@ -130,6 +133,7 @@ alias gitdiff='git difftool -y -x "colordiff -y -W $COLUMNS" | less -R'
 alias cdgit='cd $(git rev-parse --show-toplevel)'
 # get times for salah
 alias prayer="curl -sSX GET http://api.aladhan.com/v1/timingsByCity\?city\=NYC\&country\=USA\&method\=2 | jq .data.timings"
+alias weather="curl wttr.in/nyc"
 . ~/.local/z
 eval $(thefuck --alias)
 
@@ -197,6 +201,10 @@ function lbn() {
 }
 function note() {
     vim $NOTES_DIR/$1
+}
+
+function cheat() {
+    curl cht.sh/$1
 }
 
 function vim-diff() {
