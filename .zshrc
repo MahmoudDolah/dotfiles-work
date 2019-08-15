@@ -64,7 +64,8 @@ ZSH_THEME="dpoggi"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode)
+plugins=(git vi-mode kubectl kube-ps1)
+PROMPT=$PROMPT'$(kube_ps1) '
 
 source $ZSH/oh-my-zsh.sh
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
@@ -74,6 +75,7 @@ export EDITOR='vim'
 export GOPATH='/Users/mdolah/Documents/go'
 export PATH="$PATH:$GOPATH/bin"
 export SPRINT="155"
+export KOPS_STATE_STORE=s3://kubernetes-state-stores
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -102,6 +104,8 @@ alias src="source $rczsh"
 alias vrc="vim $rczsh"
 alias vo="vim -O"
 alias v="vim"
+alias k="kubectl"
+alias p="pastebin -u"
 alias lt="ls -lathr"
 alias gg="gist -pc"
 alias gist="gist -pc"
@@ -230,3 +234,4 @@ function fbr() {
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
