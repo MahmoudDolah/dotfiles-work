@@ -11,7 +11,6 @@ export ZSH="/Users/mdolah/.oh-my-zsh"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="dpoggi"
 
-
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
@@ -65,7 +64,7 @@ ZSH_THEME="dpoggi"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git vi-mode kubectl kube-ps1)
-PROMPT=$PROMPT'$(kube_ps1) '
+PROMPT=$PROMPT'$(kube-ps1) '
 
 source $ZSH/oh-my-zsh.sh
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
@@ -127,6 +126,7 @@ alias notes="note"
 alias standup="cd ~/Documents/Work && git standup && cd -"
 alias myip="curl -4 icanhazip.com"
 alias locat="locate"
+alias pokesay="pokemonsay"
 # show pretty git diff
 alias gitdiff='git difftool -y -x "colordiff -y -W $COLUMNS" | less -R'
 # go to root git directory
