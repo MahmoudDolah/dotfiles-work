@@ -102,24 +102,28 @@ export KOPS_STATE_STORE=s3://kubernetes-state-stores
 rczsh='~/.zshrc'
 alias src="source $rczsh"
 alias vrc="vim $rczsh"
-alias vo="vim -O"
 alias v="vim"
+alias vo="vim -O"
+alias vp="vim $(pbpaste)"   # Open file path in clipboard in vim
 alias k="kubectl"
-alias p="pastebin -u"
+alias tf="terraform"
+alias p="pastebin -u"   # Create unlisted pastebin (similar to secret gist)
+alias pastebin="pastebin -u" # Same set up as gists below
+alias pastebinf="pastebin"
 alias lt="ls -lathr"
-alias gg="gist -pc"
-alias gist="gist -pc"
-alias gistf="/usr/local/bin/gist"
+alias gg="gist -pc"     # Create secret gist
+alias gist="gist -pc"   # Make every gist created secret
+alias gistf="/usr/local/bin/gist"   # unless otherwise specified
 alias gs="git status"
 alias gca="git commit --amend"
 alias gfa="git fetch --all"
-alias tf="terraform"
+alias gl="git log"
 alias gf="git flow"
+alias glog="\git log --color --all --date-order --decorate --dirstat=lines,cumulative --stat | sed 's/\([0-9] file[s]\? .*)$\)/\1\n_______\n-------/g' | \less -R"
 alias bb="led-backlight-osx"
 alias vl="vim $LOGBOOK_DIR"
 alias mvl="mvim $LOGBOOK_DIR"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias glog="\git log --color --all --date-order --decorate --dirstat=lines,cumulative --stat | sed 's/\([0-9] file[s]\? .*)$\)/\1\n_______\n-------/g' | \less -R"
 alias lbj="/usr/local/bin/python3 /Users/mdolah/Documents/logbook/jira_logbook.py"
 alias lbr="cd ~/Documents/notes && vi -- "$(ls -t | head -n 1)" && cd -"
 alias notes="note"
