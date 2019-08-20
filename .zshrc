@@ -151,9 +151,8 @@ function lb() {
     # Creates logbook entry and opens it up in Vim
     mkdir -p $LOGBOOK_DIR
     if [ ! -f $LOGBOOK_DIR/$(date '+%Y-%m-%d').md ]; then
-        touch $LOGBOOK_DIR/$(date '+%Y-%m-%d').md
-        echo $(date '+%Y-%m-%d')
-        echo "## Tasks\n\n## Other" >> $LOGBOOK_DIR/$(date '+%Y-%m-%d').md
+        # Run lbj command to create today's logbook entry if none exists
+        /usr/local/bin/python3 /Users/mdolah/Documents/logbook/jira_logbook.py
     fi
     vim $LOGBOOK_DIR/$(date '+%Y-%m-%d').md
 }
