@@ -108,6 +108,7 @@ alias vp="vim $(pbpaste)"   # Open file path in clipboard in vim
 alias k="kubectl"
 alias tf="terraform"
 alias p="pastebin -u"   # Create unlisted pastebin (similar to secret gist)
+alias pb="pastebin -u"   # Create unlisted pastebin (similar to secret gist)
 alias pastebin="pastebin -u" # Same set up as gists below
 alias pastebinf="pastebin"
 alias lt="ls -lathr"
