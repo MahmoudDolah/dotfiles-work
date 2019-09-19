@@ -1,8 +1,4 @@
 echo "What's good, Mahmoud :)"
-if ! type "$motivate" > /dev/null; then
-    motivate
-fi
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -106,9 +102,16 @@ export KOPS_STATE_STORE=s3://kubernetes-state-stores
 rczsh='~/.zshrc'
 alias src="source $rczsh"
 alias vrc="vim $rczsh"
+alias wtf="wtfutil"
+alias wtfvrc="vim ~/.config/wtf/config.yml"
+alias sampler="sampler -c ~/.config/sampler/config.yml"
+alias samplervrc="vim ~/.config/sampler/config.yml"
 alias v="vim"
 alias vo="vim -O"
 alias vp="vim $(pbpaste)"   # Open file path in clipboard in vim
+alias nv="nvim"
+alias nvo="nvim -O"
+alias nvp="nvim $(pbpaste)"   # Open file path in clipboard in vim
 alias k="kubectl"
 alias tf="terraform"
 alias p="pastebin -u"   # Create unlisted pastebin (similar to secret gist)
@@ -120,7 +123,7 @@ alias gg="gist -pc"     # Create secret gist
 alias gist="gist -pc"   # Make every gist created secret
 alias gistf="/usr/local/bin/gist"   # unless otherwise specified
 alias gs="git status"
-alias gca="git commit --amend"
+alias gca="git commit --amend -v"
 alias gfa="git fetch --all"
 alias gl="git log"
 alias gf="git flow"
@@ -221,11 +224,11 @@ function vim-diff() {
 }
 alias vd="vim-diff"
 
-function delete-branch() {
-     git push --delete $1
+function delbr() {
+     git push origin --delete $1
      git branch -D $1
 }
-alias delbr="delete-branch"
+alias delete-branch="delbr"
 
 function changeMac() {
     local mac=$(openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//')
