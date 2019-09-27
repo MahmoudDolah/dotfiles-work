@@ -41,6 +41,7 @@ let mapleader = ","
 " Toggle nerdtree with ctrl+n
 nmap <C-n> :NERDTreeToggle<CR>
 noremap <Leader>o :Gbrowse<CR>
+let g:gitgutter_enabled=1
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
