@@ -47,9 +47,9 @@ let g:gitgutter_enabled=1
 let g:airline#extensions#tabline#enabled = 1
 
 " Launch FZF on ',+f'
-noremap <Leader>f :FZF<CR>
+noremap <C-f> :FZF<CR>
 
-noremap <Leader>g :FlyGrep<CR>
+noremap <C-g> :FlyGrep<CR>
 
 " Clipboard
 noremap <Leader>y "*y
