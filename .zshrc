@@ -70,7 +70,7 @@ source $ZSH/oh-my-zsh.sh
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 
 # User configuration
-export EDITOR='vim'
+export EDITOR='nvim'
 export GOPATH='/Users/mdolah/Documents/go'
 export PATH="$PATH:$GOPATH/bin"
 export SPRINT="155"
@@ -101,11 +101,12 @@ export KOPS_STATE_STORE=s3://kubernetes-state-stores
 # A lot of these have been lifted from https://news.ycombinator.com/item?id=18898523
 rczsh='~/.zshrc'
 alias src="source $rczsh"
-alias vrc="vim $rczsh"
+alias vrc="nvim $rczsh"
+alias nvimrc="nvim ~/.config/nvim/init.vim"
 alias wtf="wtfutil"
-alias wtfvrc="vim ~/.config/wtf/config.yml"
+alias wtfvrc="nvim ~/.config/wtf/config.yml"
 alias sampler="sampler -c ~/.config/sampler/config.yml"
-alias samplervrc="vim ~/.config/sampler/config.yml"
+alias samplervrc="nvim ~/.config/sampler/config.yml"
 alias v="vim"
 alias vo="vim -O"
 alias vp="vim $(pbpaste)"   # Open file path in clipboard in vim
@@ -129,7 +130,7 @@ alias gl="git log"
 alias gf="git flow"
 alias glog="\git log --color --all --date-order --decorate --dirstat=lines,cumulative --stat | sed 's/\([0-9] file[s]\? .*)$\)/\1\n_______\n-------/g' | \less -R"
 alias bb="led-backlight-osx"
-alias vl="vim $LOGBOOK_DIR"
+alias vl="nvim $LOGBOOK_DIR"
 alias mvl="mvim $LOGBOOK_DIR"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias lbj="/usr/local/bin/python3 /Users/mdolah/Documents/logbook/jira_logbook.py"
@@ -162,7 +163,7 @@ function lb() {
         # Run lbj command to create today's logbook entry if none exists
         /usr/local/bin/python3 /Users/mdolah/Documents/logbook/jira_logbook.py
     fi
-    vim $LOGBOOK_DIR/$(date '+%Y-%m-%d').md
+    nvim $LOGBOOK_DIR/$(date '+%Y-%m-%d').md
 }
 function lbs() {
     # touch $LOGBOOK_DIR/$SPRINT_NUM
@@ -172,7 +173,7 @@ function lbs() {
         echo $(date '+%Y-%m-%d')
         echo "## Tasks\n\n## Other" >> $LOGBOOK_DIR/$(date '+%Y-%m-%d').md
     fi
-    vim $LOGBOOK_DIR
+    nvim $LOGBOOK_DIR
 }
 function lbc() {
     # Creates logbook entry for today and opens up VS Code in logbook dir
@@ -211,7 +212,7 @@ function lbn() {
     code -r $LOGBOOK_DIR/$(date '+%Y-%m-%d').md
 }
 function note() {
-    vim $NOTES_DIR/$1
+    nvim $NOTES_DIR/$1
 }
 
 function cheat() {
@@ -220,15 +221,20 @@ function cheat() {
 
 function vim-diff() {
     #vim -p $(git status --porcelain $1 | awk '{print $2}')
-    vim -p $(git status -s $1 | awk '{print $2}')
+    nvim -p $(git status -s $1 | awk '{print $2}')
 }
 alias vd="vim-diff"
+alias nvd="vim-diff"
 
 function delbr() {
      git push origin --delete $1
      git branch -D $1
 }
 alias delete-branch="delbr"
+
+function gito() {
+    gitio $1 | grep "URL" | awk '{print $8}' | pbcopy
+}
 
 function changeMac() {
     local mac=$(openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//')
@@ -240,6 +246,10 @@ function changeMac() {
 
 function vf() {
     vim $(fzf)
+}
+
+function nvf() {
+    nvim $(fzf)
 }
 
 function fbr() {
