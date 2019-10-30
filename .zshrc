@@ -194,8 +194,11 @@ function delbr() {
 }
 alias delete-branch="delbr"
 
-function gito() {
-    gitio $1 | grep "URL" | awk '{print $8}' | pbcopy
+function git-short() {
+    # gitio "$1" | grep "URL" | awk '{print $8}' | pbcopy
+    SHORTURL="$(/usr/local/bin/gitio "$1" | grep 'URL' | awk '{print $8}')"
+    echo "${SHORTURL}"
+    echo "${SHORTURL}" | pbcopy
 }
 
 function changeMac() {
