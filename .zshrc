@@ -63,18 +63,21 @@ ZSH_THEME="dpoggi"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode kubectl kube-ps1)
-PROMPT=$PROMPT'$(kube-ps1) '
+plugins=(git vi-mode kubectl kube-ps1 aws docker-compose)
 
 source $ZSH/oh-my-zsh.sh
+# Dpoggi theme modified to include kube_ps1
+PROMPT='%{$fg[$NCOLOR]%}%n%{$reset_color%}@%{$fg[cyan]%}%m%{$reset_color%}:%{$fg[magenta]%}%~$(git_prompt_info)$(kube_ps1) %{$fg[red]%}%(!.#.»)%{$reset_color%} '
+
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 
 # User configuration
-export EDITOR='nvim'
 export GOPATH='/Users/mdolah/Documents/go'
 export PATH="$PATH:$GOPATH/bin"
-export SPRINT="155"
 export KOPS_STATE_STORE=s3://kubernetes-state-stores
+export SPRINT='166'
+export VISUAL=nvim
+export EDITOR="$VISUAL"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -102,6 +105,7 @@ export KOPS_STATE_STORE=s3://kubernetes-state-stores
 rczsh='~/.zshrc'
 alias src="source $rczsh"
 alias vrc="nvim $rczsh"
+alias vim="nvim"
 alias nvimrc="nvim ~/.config/nvim/init.vim"
 alias wtf="wtfutil"
 alias wtfvrc="nvim ~/.config/wtf/config.yml"
@@ -126,10 +130,12 @@ alias gistf="/usr/local/bin/gist"   # unless otherwise specified
 alias gs="git status"
 alias gca="git commit --amend -v"
 alias gfa="git fetch --all"
-alias gl="git log"
+alias gl="tig"
 alias gf="git flow"
 alias glog="\git log --color --all --date-order --decorate --dirstat=lines,cumulative --stat | sed 's/\([0-9] file[s]\? .*)$\)/\1\n_______\n-------/g' | \less -R"
+alias docker-kill-all="docker kill $(docker ps -q)"
 alias bb="led-backlight-osx"
+alias display='displayplacer "id:FAA30FB7-F689-B0F2-3E70-3353DE6D2774 res:2560x1440 hz:60 color_depth:8 scaling:off origin:(0,0) degree:0" "id:344EE880-275A-77D9-EEEF-721B572C1209 res:1440x2560 hz:60 color_depth:8 scaling:off origin:(2560,-411) degree:90"'	# Sets monitors
 alias vl="nvim $LOGBOOK_DIR"
 alias mvl="mvim $LOGBOOK_DIR"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
@@ -164,52 +170,6 @@ function lb() {
         /usr/local/bin/python3 /Users/mdolah/Documents/logbook/jira_logbook.py
     fi
     nvim $LOGBOOK_DIR/$(date '+%Y-%m-%d').md
-}
-function lbs() {
-    # touch $LOGBOOK_DIR/$SPRINT_NUM
-    mkdir -p $LOGBOOK_DIR
-    if [ ! -f $LOGBOOK_DIR/$(date '+%Y-%m-%d').md ]; then
-        touch $LOGBOOK_DIR/$(date '+%Y-%m-%d').md
-        echo $(date '+%Y-%m-%d')
-        echo "## Tasks\n\n## Other" >> $LOGBOOK_DIR/$(date '+%Y-%m-%d').md
-    fi
-    nvim $LOGBOOK_DIR
-}
-function lbc() {
-    # Creates logbook entry for today and opens up VS Code in logbook dir
-    echo "Today's logbook"
-    mkdir -p $LOGBOOK_DIR
-    code $LOGBOOK_DIR
-    if [ ! -f $LOGBOOK_DIR/$(date '+%Y-%m-%d').md ]; then
-        touch $LOGBOOK_DIR/$(date '+%Y-%m-%d').md
-        echo $(date '+%Y-%m-%d')
-        echo "## Tasks\n\n## Other" >> $LOGBOOK_DIR/$(date '+%Y-%m-%d').md
-    fi
-    code -g $LOGBOOK_DIR/$(date '+%Y-%m-%d').md:2
-}
-function lbcc() {
-    # Creates logbook entry for tomorrow
-    #TOMORROW_DATE=$(if [[ $( date -v+1d +%u ) -lt 5 ]] ; then date -v+1d '+%Y-%m-%d' ; else date -v+3d '+%Y-%m-%d' ; fi)
-    TOMORROW_DATE=$(if [[ $( date +%u ) -lt 5 ]] ; then date -v+1d '+%Y-%m-%d' ; else date -v+3d '+%Y-%m-%d' ; fi)
-    echo "Tomorrow's logbook"
-    echo $TOMORROW_DATE
-    mkdir -p $LOGBOOK_DIR
-
-    if [ ! -f $LOGBOOK_DIR/$TOMORROW_DATE.md ]; then
-        touch $LOGBOOK_DIR/$TOMORROW_DATE.md
-        echo $TOMORROW_DATE
-        echo "## Tasks\n\n## Other" >> $LOGBOOK_DIR/$TOMORROW_DATE.md
-    fi
-    #code $LOGBOOK_DIR
-    #code -g $LOGBOOK_DIR/$TOMORROW_DATE.md
-}
-function lbn() {
-    # Creates a new logbook entry but doesn't open up VS Code
-    if [ ! -f $LOGBOOK_DIR/$(date '+%Y-%m-%d').md ]; then
-        touch $LOGBOOK_DIR/$(date '+%Y-%m-%d').md
-        echo "## Tasks\n\n## Other" >> $LOGBOOK_DIR/$(date '+%Y-%m-%d').md
-    fi
-    code -r $LOGBOOK_DIR/$(date '+%Y-%m-%d').md
 }
 function note() {
     nvim $NOTES_DIR/$1
