@@ -209,6 +209,10 @@ function changeMac() {
     echo "Your new physical address is $mac"
 }
 
+function calc() {
+    printf "%s\n" "$*" | bc
+}
+
 function vf() {
     vim $(fzf)
 }
