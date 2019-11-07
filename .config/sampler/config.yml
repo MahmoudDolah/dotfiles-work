@@ -1,0 +1,38 @@
+sparklines:
+  - title: CPU usage
+    position: [[18, 29], [28, 13]]
+    rate-ms: 200
+    scale: 0
+    sample: ps -A -o %cpu | awk '{s+=$1} END {print s}'
+  - title: Free memory pages
+    position: [[46, 29], [29, 13]]
+    rate-ms: 200
+    scale: 0
+    sample: memory_pressure | grep 'Pages free' | awk '{print $3}'
+textboxes:
+  - title: Weather
+    position: [[0, 0], [17, 15]]
+    rate-ms: 1000000
+    color: 178
+    sample: curl wttr.in?0ATQF
+  - title: Disk Space
+    position: [[37, 0], [44, 18]]
+    rate-ms: 10000
+    color: 178
+    sample: df -h
+  - title: Docker containers stats
+    position: [[18, 18], [60, 12]]
+    rate-ms: 10000
+    color: 178
+    sample: docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemPerc}}\t{{.MemUsage}}\t"
+  - title: Spotify Now Playing
+    position: [[18, 0], [19, 17]]
+    rate-ms: 3000
+    color: 178
+    sample: spotify status | gsed 's/\x1b\[[0-9;]*m//g' | gsed 's/(B//'
+  - title: NYC Prayer Times
+    position: [[0, 16], [17, 26]]
+    rate-ms: 100000000
+    color: 178
+    sample: curl -sSX GET http://api.aladhan.com/v1/timingsByCity\?city\=NYC\&country\=USA\&method\=2
+        | jq .data.timings
