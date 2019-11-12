@@ -138,6 +138,7 @@ alias glog="\git log --color --all --date-order --decorate --dirstat=lines,cumul
 alias docker-kill-all="docker kill $(docker ps -q)"
 alias bb="led-backlight-osx"
 alias display='displayplacer "id:FAA30FB7-F689-B0F2-3E70-3353DE6D2774 res:2560x1440 hz:60 color_depth:8 scaling:off origin:(0,0) degree:0" "id:344EE880-275A-77D9-EEEF-721B572C1209 res:1440x2560 hz:60 color_depth:8 scaling:off origin:(2560,-411) degree:90"'	# Sets monitors
+alias display-horizontal='displayplacer "id:FAA30FB7-F689-B0F2-3E70-3353DE6D2774 res:2560x1440 hz:60 color_depth:8 scaling:off origin:(0,0) degree:0" "id:344EE880-275A-77D9-EEEF-721B572C1209 res:2560x1440 hz:60 color_depth:8 scaling:off origin:(2560,0) degree:0"'
 alias vl="nvim $LOGBOOK_DIR"
 alias mvl="mvim $LOGBOOK_DIR"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
