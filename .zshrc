@@ -170,7 +170,7 @@ function lb() {
     mkdir -p $LOGBOOK_DIR
     if [ ! -f $LOGBOOK_DIR/$(date '+%Y-%m-%d').md ]; then
         # Run lbj command to create today's logbook entry if none exists
-        /usr/local/bin/python3 /Users/mdolah/Documents/logbook/jira_logbook.py
+        /usr/local/bin/python3 $LOGBOOK_DIR/jira_logbook.py
     fi
     nvim $LOGBOOK_DIR/$(date '+%Y-%m-%d').md
 }
