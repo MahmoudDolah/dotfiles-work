@@ -190,16 +190,37 @@ alias vd="vim-diff"
 alias nvd="vim-diff"
 
 function delbr() {
-     git push origin --delete $1
-     git branch -D $1
+    # if [[ git branch -a | egrep 'remotes/origin/$1' ]];
+    git push origin --delete $1
+    git branch -D $1
 }
 alias delete-branch="delbr"
 
 function git-short() {
-    # gitio "$1" | grep "URL" | awk '{print $8}' | pbcopy
-    SHORTURL="$(/usr/local/bin/gitio "$1" | grep 'URL' | awk '{print $8}')"
-    echo "${SHORTURL}"
-    echo "${SHORTURL}" | pbcopy
+    URL="$1"
+    CODE="$2"
+
+    if ! gexpr "${URL}" : "\(\(https\?://\)\?\(gist\.\)\?github.com/\)" >/dev/null; then
+	    echo "* github.com URLs only" >&2
+	    exit 1
+    fi
+
+    if ! gexpr "${URL}" : "http" >/dev/null; then
+	    URL="https://${URL}"
+    fi
+
+    OUT="$(\
+	    curl -si https://git.io -F "url=${URL}" ${CODE:+-F "code=${CODE}"} | \
+	    gsed '/^Status: /{s///;/^201/d;q};/^Location: /!d;s///'
+	    )"
+
+    if gexpr "${OUT}" : "[0-9]\+" >/dev/null; then
+	    echo "${OUT}" >&2
+	    exit 1
+    fi
+
+    echo "${OUT}"
+    echo "${OUT}" | pbcopy
 }
 
 function changeMac() {
