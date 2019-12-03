@@ -52,6 +52,7 @@ Plug 'Rigellute/rigel'
 
 Plug 'https://github.com/alok/notational-fzf-vim'
 Plug 'https://github.com/martinda/Jenkinsfile-vim-syntax.git'
+Plug 'https://github.com/HendrikPetertje/vimify.git'
 
 call plug#end()
 
