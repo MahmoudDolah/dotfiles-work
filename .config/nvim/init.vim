@@ -33,6 +33,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'jreybert/vimagit'
 Plug 'tpope/vim-commentary'
 Plug 'Chiel92/vim-autoformat'
+Plug 'Yggdroot/indentLine'
 
 Plug 'wsdjeg/FlyGrep.vim'
 Plug '/usr/local/opt/fzf'
