@@ -252,6 +252,5 @@ function fbr() {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export PATH="/usr/local/opt/icu4c/bin:$PATH"
-export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+export PATH="/Users/mdolah/.local/bin:/usr/local/opt/icu4c/sbin:$PATH"
 if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
