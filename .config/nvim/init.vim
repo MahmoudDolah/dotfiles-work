@@ -16,14 +16,14 @@ Plug 'https://github.com/tpope/vim-rhubarb.git'
 Plug 'neomake/neomake'
 Plug 'https://github.com/vim-syntastic/syntastic.git'
 
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+" let g:deoplete#enable_at_startup = 1
 
 Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
@@ -52,7 +52,6 @@ Plug 'Rigellute/rigel'
 
 Plug 'https://github.com/alok/notational-fzf-vim'
 Plug 'https://github.com/martinda/Jenkinsfile-vim-syntax.git'
-Plug 'https://github.com/HendrikPetertje/vimify.git'
 
 call plug#end()
 

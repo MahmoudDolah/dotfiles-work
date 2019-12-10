@@ -11,7 +11,7 @@ sparklines:
     sample: memory_pressure | grep 'Pages free' | awk '{print $3}'
 textboxes:
   - title: Date & Time
-    position: [[0, 0], [16, 8]]
+    position: [[0, 0], [16, 9]]
     color: 178
     sample: date
   - title: Weather
@@ -23,14 +23,15 @@ textboxes:
     position: [[37, 0], [40, 18]]
     rate-ms: 1000000
     color: 178
-    sample: speedtest --simple
+    sample: /Sy*/L*/Priv*/Apple8*/V*/C*/R*/airport -I | grep SSID | grep -v BSSID
+        | awk '{print $2}' && speedtest --simple
   - title: Docker containers stats
     position: [[18, 18], [60, 12]]
     rate-ms: 10000
     color: 178
     sample: docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemPerc}}\t{{.MemUsage}}\t"
   - title: Spotify Now Playing
-    position: [[18, 0], [19, 17]]
+    position: [[18, 0], [19, 18]]
     rate-ms: 3000
     color: 178
     sample: spotify status | gsed 's/\x1b\[[0-9;]*m//g' | gsed 's/(B//'
