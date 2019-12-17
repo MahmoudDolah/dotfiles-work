@@ -157,7 +157,7 @@ alias gitdiff='git difftool -y -x "colordiff -y -W $COLUMNS" | less -R'
 alias cdgit='cd $(git rev-parse --show-toplevel)'
 # get times for salah
 alias prayer="curl -sSX GET http://api.aladhan.com/v1/timingsByCity\?city\=NYC\&country\=USA\&method\=2 | jq .data.timings"
-alias weather="curl wttr.in/nyc"
+alias weather="curl wttr.in/nyc | less"
 . ~/.local/z
 eval $(thefuck --alias)
 
