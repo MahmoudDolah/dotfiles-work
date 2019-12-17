@@ -70,6 +70,7 @@ nnoremap <silent><Leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 
 noremap <Leader>o :Gbrowse<CR>
 let g:gitgutter_enabled=1
+let g:gitgutter_max_signs = 1000  " default value is 500
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
