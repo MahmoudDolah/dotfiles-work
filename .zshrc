@@ -190,7 +190,8 @@ function cheat() {
 
 function vim-diff() {
     #vim -p $(git status --porcelain $1 | awk '{print $2}')
-    nvim -p $(git status -s $1 | awk '{print $2}')
+    # nvim -p $(git status -s $1 | awk '{print $2}')
+    nvim -p $(git status --porcelain --untracked-files=no | awk '{print $2}')
 }
 alias vd="vim-diff"
 alias nvd="vim-diff"
