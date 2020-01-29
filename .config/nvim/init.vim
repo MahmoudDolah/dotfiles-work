@@ -9,7 +9,7 @@ set nohlsearch
 call plug#begin('~/.vim/plugged')
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/tpope/vim-rhubarb.git'
