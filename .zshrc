@@ -139,7 +139,7 @@ alias gl="tig"
 alias gf="git flow"
 alias glog="\git log --color --all --date-order --decorate --dirstat=lines,cumulative --stat | sed 's/\([0-9] file[s]\? .*)$\)/\1\n_______\n-------/g' | \less -R"
 # https://gist.github.com/evanscottgray/8571828#gistcomment-1772213
-alias docker-stop-all="docker stop $(docker ps -q)"
+alias docker-stop-all="docker stop $(docker ps -q -a)"
 alias docker-kill-all="docker kill $(docker ps -q)"
 alias bb="led-backlight-osx"
 alias display='displayplacer "id:FAA30FB7-F689-B0F2-3E70-3353DE6D2774 res:2560x1440 hz:60 color_depth:8 scaling:off origin:(0,0) degree:0" "id:344EE880-275A-77D9-EEEF-721B572C1209 res:1440x2560 hz:60 color_depth:8 scaling:off origin:(2560,-411) degree:90"'	# Sets monitors
