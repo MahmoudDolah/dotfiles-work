@@ -277,7 +277,8 @@ function extract () {
    else
        echo "'$1' is not a valid file"
    fi
- }
+}
+
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/Users/mdolah/.local/bin:/usr/local/opt/icu4c/sbin:$PATH"
