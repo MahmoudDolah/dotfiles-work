@@ -5,6 +5,11 @@ set number
 set relativenumber
 set nohlsearch
 
+" Set undo for infinite undos
+" https://news.ycombinator.com/item?id=18901621
+set undofile
+set undodir=~/.vim/undodir
+
 " Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'ncm2/ncm2'
