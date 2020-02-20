@@ -164,6 +164,14 @@ alias pwdgit='git rev-parse --show-prefix | gtee "$(tty)" | pbcopy'
 alias prayer="curl -sSX GET http://api.aladhan.com/v1/timingsByCity\?city\=NYC\&country\=USA\&method\=2 | jq .data.timings"
 alias weather="curl wttr.in/nyc | less"
 alias ua="brew update && brew upgrade"
+
+# Use GNU coreutils commands
+alias awk='gawk'
+alias sed='gsed'
+alias date='gdate'
+alias tar='gtar'
+alias which='gwhich'
+
 . ~/.local/z
 eval $(thefuck --alias)
 
