@@ -158,6 +158,8 @@ alias pokesay="pokemonsay"
 alias gitdiff='git difftool -y -x "colordiff -y -W $COLUMNS" | less -R'
 # go to root git directory
 alias cdgit='cd $(git rev-parse --show-toplevel)'
+# get current relative dir from git and copy to clipboard
+alias pwdgit='git rev-parse --show-prefix | gtee "$(tty)" | pbcopy'
 # get times for salah
 alias prayer="curl -sSX GET http://api.aladhan.com/v1/timingsByCity\?city\=NYC\&country\=USA\&method\=2 | jq .data.timings"
 alias weather="curl wttr.in/nyc | less"
