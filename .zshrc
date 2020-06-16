@@ -207,9 +207,11 @@ alias vd="vim-diff"
 alias nvd="vim-diff"
 
 function delbr() {
-    # if [[ git branch -a | egrep 'remotes/origin/$1' ]];
-    git push origin --delete $1
-    git branch -D $1
+    BRANCH=$(git rev-parse --abbrev-ref HEAD)
+    echo "Deleting branch: $BRANCH"
+    git checkout master
+    git push origin --delete $BRANCH
+    git branch -D $BRANCH
 }
 alias delete-branch="delbr"
 
