@@ -298,3 +298,4 @@ if [[ -r "/usr/local/opt/mcfly/mcfly.zsh" ]]; then
 fi
 export PATH="/Users/mdolah/.local/bin:/usr/local/opt/icu4c/sbin:$PATH"
 if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
+export PATH="/usr/local/sbin:$PATH"
