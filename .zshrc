@@ -293,5 +293,8 @@ function extract () {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [[ -r "/usr/local/opt/mcfly/mcfly.zsh" ]]; then
+  source "/usr/local/opt/mcfly/mcfly.zsh"
+fi
 export PATH="/Users/mdolah/.local/bin:/usr/local/opt/icu4c/sbin:$PATH"
 if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
