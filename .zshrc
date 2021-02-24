@@ -3,7 +3,7 @@ echo "What's good, Mahmoud :)"
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/mdolah/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -73,7 +73,7 @@ PROMPT='%{$fg[$NCOLOR]%}%n%{$reset_color%}@%{$fg[cyan]%}%m%{$reset_color%}:%{$fg
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 
 # User configuration
-export GOPATH='/Users/mdolah/Documents/go'
+export GOPATH='$HOME/Documents/go'
 export PATH="$PATH:$GOPATH/bin"
 export KOPS_STATE_STORE=s3://kubernetes-state-stores
 export SPRINT='166'
@@ -296,6 +296,6 @@ function extract () {
 if [[ -r "/usr/local/opt/mcfly/mcfly.zsh" ]]; then
   source "/usr/local/opt/mcfly/mcfly.zsh"
 fi
-export PATH="/Users/mdolah/.local/bin:/usr/local/opt/icu4c/sbin:$PATH"
+export PATH="$HOME/.local/bin:/usr/local/opt/icu4c/sbin:$PATH"
 if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
 export PATH="/usr/local/sbin:$PATH"
